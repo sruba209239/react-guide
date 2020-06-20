@@ -1,8 +1,13 @@
 import React from "react";
 
+let myStyle = {
+  '@media(min-width:500px)': {
+    width: '450px'
+  }
+};
 const person = (props) => {
   return (
-    <div className="Person">
+    <div className="Person" style={myStyle}>
       <p onClick={props.clickMethod}>
         I am {props.name} and i am {props.age} years old!
       </p>

@@ -6,3 +6,11 @@
   padding: 15px;
   text-align: center;
 }
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}

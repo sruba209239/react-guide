@@ -43,11 +43,16 @@ class App extends Component {
 
   render() {
     const myStyle = {
-      backgroundColor: "lightgreen",
+      backgroundColor: "green",
+      color: 'white',
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     let persons = null;
@@ -66,22 +71,31 @@ class App extends Component {
               />
             );
           })}
-          {/* <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} clickMethod={this.switchNameHandler.bind(this, 'name2')} nameMethod={this.setNameHandler}>My hobbies are racing</Person>
-
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} /> */}
         </div>
       );
+
+      myStyle.backgroundColor = "red";
+      myStyle[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <h1>Hi. This is a react App</h1>
-        <p>Is it working ?</p>
+        <p className={classes.join(' ')}>Is it working ?</p>
         <button style={myStyle} onClick={this.togglePersonsHandler}>
           Toggle Persons
-        </button>{" "}
+        </button>
         {/* this may be inefficient*/}
         {persons}
         <p>{this.state.other}</p>
