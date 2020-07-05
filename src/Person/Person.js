@@ -21,15 +21,15 @@ const StyledDiv = styled.div`
 const person = (props) => {
   return (
     <StyledDiv>
-      <div className="Person">
-        <p onClick={props.clickMethod}>
-          I am {props.name} and i am {props.age} years old!
+      {/* <div className="Person"> */}
+      <p onClick={props.clickMethod}>
+        I am {props.name} and i am {props.age} years old!
       </p>
-        <p>{props.children}</p>
-        <p>
-          <input onChange={props.nameMethod} value={props.name}></input>
-        </p>
-      </div>
+      <p>{props.children}</p>
+      <p>
+        <input onChange={props.nameMethod} value={props.name}></input>
+      </p>
+      {/* </div> */}
     </StyledDiv>
   );
 };
