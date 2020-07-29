@@ -5,6 +5,21 @@ import classes from './Cockpit.css';
 const cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
+    // simulate an HTTP request
+    setTimeout(() => {
+      alert('saved data!');
+    }, 1000);
+
+    return () => {
+      console.log('[Cockpit.js] return method (cleanup) in useEffect');
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('[Cockpit.js] 2nd useEffect');
+    return () => {
+      console.log('[Cockpit.js] 2nd return method (cleanup) in useEffect');
+    }
   });
 
 
