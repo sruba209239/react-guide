@@ -5,6 +5,15 @@ import withClass from "../../../hoc/withClass";
 import PropTypes from "prop-types";
 
 class Person extends Component {
+  constructor(props) {
+    super(props);
+    this.inputElementRef = React.createRef();
+  }
+  componentDidMount() {
+    // this.inputElement.focus();
+    this.inputElementRef.current.focus();
+  }
+
   render() {
     console.log("[Person.js] rendering...");
     return (
@@ -16,6 +25,10 @@ class Person extends Component {
         <p key="item2">{this.props.children}</p>
         <input
           key="item3"
+          // ref={(inputRefEl) => {
+          //   this.inputElement = inputRefEl;
+          // }}
+          ref={this.inputElementRef}
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
