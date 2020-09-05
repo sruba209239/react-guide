@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context';
 
 const cockpit = props => {
+  const btnClickRef = useRef(null);
+
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
-    // simulate an HTTP request
-    setTimeout(() => {
-      alert('saved data!');
-    }, 1000);
+    btnClickRef.current.click();
 
     return () => {
       console.log('[Cockpit.js] return method (cleanup) in useEffect');
     }
-  }, []);
+  }, []); // this useEffect is called once on load
 
   useEffect(() => {
     console.log('[Cockpit.js] 2nd useEffect');
@@ -42,7 +42,11 @@ const cockpit = props => {
       <p className={assignedClasses.join(' ')}>This is really working!</p>
       <button
         className={btnClass}
+        ref={btnClickRef}
         onClick={props.clicked}>Toggle Persons</button>
+      <AuthContext.Consumer>
+        {context => <button onClick={context.login}>Log in</button>}
+      </AuthContext.Consumer>
     </div>
   );
 };
